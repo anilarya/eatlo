@@ -13,9 +13,10 @@ angular.module('eatloApp')
     $scope.model = {
     	activate_all : true ,
     	activate_veg :false , 
-    	activate_non_veg :false 
+    	activate_non_veg :false ,
+      selected_menu : []
     }
-
+    // $scope.model.selected_menu[0] = {};s
 
     $scope.fetchMenuCategory = function(category){
     	if(category == 'all'){
@@ -38,10 +39,70 @@ angular.module('eatloApp')
 
     	}
     }
+    $scope.model.selected_menu = [];
+    $scope.model.total_items = 0;
+    $scope.model.product_count = 0 ;
+    $scope.model.final_total_price = 0 ;
 
     $scope.selectedItem = function(menu){
-      console.log("menu", menu);
+      var temp_list = {} ;
+      temp_list = angular.copy(menu) ; 
+      temp_list.total_price = menu.price ;
+      temp_list.quantity = 0 ; 
+      var flag = false;
+      var len = $scope.model.selected_menu.length ;
+      var index ;  
+      if(len > 0){
+        for(var i =0 ; i < len; i++) {
+           if($scope.model.selected_menu[i].item_id == menu.item_id){
+              flag = true;
+              $scope.model.total_items +=1 ; 
+              $scope.model.selected_menu[i].quantity +=  1  ; 
+              $scope.model.selected_menu[i].total_price = $scope.model.selected_menu[i].quantity * $scope.model.selected_menu[i].price;   
+              $scope.model.final_total_price +=  $scope.model.selected_menu[i].price
+            }
+        };
+      }
+     
+      if(flag == false){
+        $scope.model.selected_menu.push(temp_list); 
+        $scope.model.total_items +=1 ;
+        $scope.model.selected_menu[$scope.model.selected_menu.length-1].quantity += 1; 
+        $scope.model.final_total_price += $scope.model.selected_menu[$scope.model.selected_menu.length-1].price
+      }  
+      $scope.model.product_count = $scope.model.selected_menu.length;
+      console.log(i,$scope.model.selected_menu); 
     }
+
+    $scope.reduce_item = function(index){
+     
+      $scope.model.total_items -=1 ;
+      $scope.model.final_total_price -= $scope.model.selected_menu[index].price ; 
+      $scope.model.selected_menu[index].quantity -= 1  ; 
+      if($scope.model.selected_menu[index].quantity == 0){
+        $scope.model.product_count -= 1; 
+        $scope.model.selected_menu.splice(index, 1);
+        return ;
+      }
+      $scope.model.selected_menu[index].total_price -= $scope.model.selected_menu[index].price
+      console.log($scope.model.selected_menu);
+    }
+
+    $scope.add_item = function(index){
+      $scope.model.total_items +=1 ;
+      $scope.model.final_total_price += $scope.model.selected_menu[index].price ; 
+      $scope.model.selected_menu[index].quantity += 1  ;
+      $scope.model.selected_menu[index].total_price += $scope.model.selected_menu[index].price
+      console.log($scope.model.selected_menu);
+    }
+
+    $scope.remove_item = function(index){
+      $scope.model.product_count -= 1; 
+      $scope.model.final_total_price -= $scope.model.selected_menu[index].total_price 
+      $scope.model.total_items -= $scope.model.selected_menu[index].quantity ;
+      $scope.model.selected_menu.splice(index, 1);
+    }
+
 
     var fetchMenus = function(){ 
       menu.fetchMenus().success(function (results) {
@@ -54,7 +115,6 @@ angular.module('eatloApp')
       }).error(function (err) { 
           alert("err", err);
       });
-
 	} 
 
  
