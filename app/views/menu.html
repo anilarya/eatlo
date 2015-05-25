@@ -1,0 +1,57 @@
+<br><br>
+<label>Menu</label>&nbsp;&nbsp; 
+<button ng-click="fetchMenuCategory('all')" id="activateAll" ng-class="{on: model.activate_all}"><b>All</b></button>&nbsp;&nbsp;
+<button ng-click="fetchMenuCategory('veg')" id="activateVeg" ng-class="{on: model.activate_veg}"><b>Veg</b></button> &nbsp;&nbsp;
+<button ng-click="fetchMenuCategory('non veg')" id="activateNonVeg" ng-class="{on: model.activate_non_veg}"><b>Non Veg</b></button><br><br><br>
+
+<div class="row">
+	<div class="col-md-9" >
+		<div class="row"> 
+			<div class="col-md-4" ng-repeat="menu  in model.menuResults">
+				<div class="panel panel-default" ng-if="menu.type ==model.food_category || model.activate_all ==true" style=" cursor: pointer; cursor: hand;" ng-click="selectedItem(menu)">
+				  <div class="panel-heading">
+				    <!-- <h3 class="panel-title">Panel title</h3> -->
+				    <img ng-src="images/{{menu.image}}" alt="Smiley face" height="150" width="240">
+				  </div>
+				  <div class="panel-body">
+				    <label>{{menu.item}}</label>  
+				    <br><label>₹{{menu.price}}</label>
+				    <p>{{menu.description}}</p> 
+				  </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-3" >
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Panel title</h3>
+		  </div>
+		  <div class="panel-body">
+		    Panel content
+		    <hr>
+		    <div>
+		    	
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>
+
+
+<style type="text/css"> 
+	#activateAll.on {
+    background-color: #E57474;
+    color: white;
+	}
+	#activateVeg.on {
+    background-color: green;
+     color: white;
+	}
+	#activateNonVeg.on {
+    background-color: #E57474;
+     color: white;
+	}
+</style>
+

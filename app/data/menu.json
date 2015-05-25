@@ -1,0 +1,139 @@
+{
+    "count": 85,
+    "next": null,
+    "previous": null,
+    "results": {
+        "1": [
+            {
+                "location": "HSR Layout",
+                "item": "South Indian Thali",
+                "item_id" :890,
+                "description": "3 roti , Curd Rice, Dahi, Daal , sambhar",
+                "price": 100,
+                "available" : true ,
+                "type" : "veg", 
+                 "image" : "food1.jpg" 
+            },
+            {
+                "location": "HSR Layout",
+                "item": "Big south Indian Thali",
+                "item_id" :891,
+                "description": "4 roti, salad , daal , curd , sambhar , Pickle",
+                "price": 100,
+                "available" : true ,
+                "type" : "veg",
+                 "image" : "food2.jpg" 
+            },
+            {
+               
+                "location": "HSR Layout",
+                "item": "Lassii",
+                "item_id" :900,
+                "description": "Punjabi sweet lassi, Mint, Ginger , Sweets ",
+                "price": 110,
+                "available" : true ,
+                "type" : "veg",
+                 "image" : "food3.jpg" 
+            }, 
+            {
+                
+                "location": "HSR Layout",
+                "item": "Mango Juice",
+                "description": "sweet Mango juice chilled , Ginger , Mint etx",
+                "price": 45,
+                "available" : true ,
+                "item_id" :901,
+                "type" : "veg",
+                 "image" : "food4.jpg" 
+
+            },
+            {
+                 "location": "HSR Layout",
+                "item": "Big south Indian Thali",
+                "description": "4 roti, salad , daal , curd , sambhar , Pickle",
+                "price": 100,
+                "item_id" :902,
+                "available" : true ,
+                "type" : "veg",
+                 "image" : "food2.jpg" 
+            },
+            {
+                "location": "HSR Layout",
+                "item": "Big south Indian Thali",
+                "item_id" :903,
+                "description": "4 roti, salad , daal , curd , sambhar , Pickle",
+                "price": 100,
+                "available" : true ,
+                "type" : "veg",
+                 "image" : "food2.jpg" 
+            },
+             {
+                "location": "HSR Layout",
+                "item": "Big south Indian Thali",
+                "item_id" :904,
+                "description": "4 roti, salad , daal , curd , sambhar , Pickle",
+                "price": 100,
+                "available" : true ,
+                "type" : "non veg",
+                 "image" : "food1.jpg" 
+            } 
+        ],
+        "2": [
+            {
+                "location": "HSR Layout",
+                "item": "Lassii",
+                "description": "Punjabi sweet lassi ",
+                "price": 110,
+                "available" : true ,
+                "type" : "veg",
+                 "image" : "food3.jpg" 
+            },
+            { 
+                "location": "HSR Layout",
+                "item": "Mango Juice",
+                "description": "sweet Mango juice chilled",
+                "price": 45,
+                "available" : true ,
+                "type" : "veg",
+                 "image" : "food4.jpg" 
+
+            },
+            {
+                "tweet_id": 308,
+                "date": "2015-05-23 11:02:14",
+                "tweet": "playing key2 tweet",
+                "username": "Anjani"
+            } 
+        ],
+        "3": [
+            {
+                "location": "HSR Layout",
+                "item": "South Indian Thali",
+                "description": "3 roti , Curd Rice, Dahi, Daal , sambhar",
+                "price": 100,
+                "available" : true ,
+                "type" : "veg", 
+                 "image" : "food1.jpg" 
+            },
+            {
+                "location": "HSR Layout",
+                "item": "Big south Indian Thali",
+                "description": "4 roti, salad , daal , curd ,",
+                "price": 100,
+                "available" : true ,
+                "type" : "veg",
+                 "image" : "food2.jpg" 
+            },
+            {
+               
+                "location": "HSR Layout",
+                "item": "Lassii",
+                "description": "Punjabi sweet lassi ",
+                "price": 110,
+                "available" : true ,
+                "type" : "veg",
+                 "image" : "food3.jpg" 
+            }
+        ]
+    }
+}
