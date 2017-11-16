@@ -1,0 +1,75 @@
+<br><br>
+<label>Menu</label>&nbsp;&nbsp; 
+<button ng-click="fetchMenuCategory('all')" id="activateAll" ng-class="{on: model.activate_all}"><b>All</b></button>&nbsp;&nbsp;
+<button ng-click="fetchMenuCategory('veg')" id="activateVeg" ng-class="{on: model.activate_veg}"><b>Veg</b></button> &nbsp;&nbsp;
+<button ng-click="fetchMenuCategory('non veg')" id="activateNonVeg" ng-class="{on: model.activate_non_veg}"><b>Non Veg</b></button><br><br><br>
+
+<div class="row">
+	<div class="col-md-9" >
+		<div class="row"> 
+			<div class="col-md-4" ng-repeat="menu  in model.menuResults">
+				<div class="panel panel-default" ng-if="menu.type ==model.food_category || model.activate_all ==true" style=" cursor: pointer; cursor: hand;" ng-click="selectedItem(menu)">
+				  <div class="panel-heading">
+				    <!-- <h3 class="panel-title">Panel title</h3> -->
+				    <img ng-src="images/{{menu.image}}" alt="Smiley face" height="150" width="240">
+				  </div>
+				  <div class="panel-body hovering">
+				    <label>{{menu.item}}</label>  
+				    <br><label>₹{{menu.price}}</label>
+				    <p>{{menu.description}}</p> 
+				  </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-3"  ng-if="model.total_items!=0">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <p class="panel-title">
+		    	 <img src="images/shoping-cart-icon.png" height="20" width="25">
+		    	 {{model.total_items }} item(s) of {{model.product_count}} product(s)
+		    </p>
+		  </div>
+		  <div class="panel-body" ng-if="model.selected_menu.length >=0">
+		    	<div style="min-height: 5px; max-height: 290px;  overflow-y:scroll">
+			    	<div ng-repeat= "menu in model.selected_menu">
+				    	<div>
+				    		<b>{{menu.item}}</b><br><br><br>
+				    	</div>
+				    		<div>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; {{menu.quantity}} &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;Rs. {{menu.total_price}}</div>
+				    	<a href="" ng-click="reduce_item($index)"><img src="images/minus.png" height="20" width="25"></a>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<a href="" ng-click="add_item($index)"><img src="images/plus.png" height="25" width="30"></a>
+				    	&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+				    	<a href="" ng-click="remove_item($index)"><img src="images/cross.png" height="20" width="25"></a>
+				    	<hr>
+			        </div>
+		        </div>
+		        <hr>
+		        <font size="4">Total : <b>₹{{model.final_total_price}}</b></font>
+		    <div>
+		    	
+		    </div>
+		  </div>
+		</div>
+	</div>
+</div>
+
+
+<style type="text/css"> 
+	#activateAll.on {
+    background-color: #E57474;
+    color: white;
+	}
+	#activateVeg.on {
+    background-color: green;
+     color: white;
+	}
+	#activateNonVeg.on {
+    background-color: #E57474;
+     color: white;
+	}
+	.panel-body.hovering:hover{
+		background-color: #E8E8E8 ;
+	}
+</style>
+

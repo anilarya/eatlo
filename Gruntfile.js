@@ -40,14 +40,6 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
-      jsTest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
-      },
-      compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer']
-      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -285,17 +277,7 @@ module.exports = function (grunt) {
     // concat: {
     //   dist: {}
     // },
-
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= yeoman.dist %>/images'
-        }]
-      }
-    },
+ 
 
     svgmin: {
       dist: {
@@ -338,14 +320,7 @@ module.exports = function (grunt) {
         }]
       }
     },
-
-    // Replace Google CDN references
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
-      }
-    },
-
+ 
     // Copies remaining files to places other tasks can use
     copy: {
       dist: {
@@ -385,25 +360,17 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'compass:server'
+        // 'compass:server'
       ],
       test: [
-        'compass'
+        // 'compass'
       ],
       dist: [
-        'compass:dist',
+        // 'compass:dist',
         'imagemin',
         'svgmin'
       ]
-    },
-
-    // Test settings
-    karma: {
-      unit: {
-        configFile: 'test/karma.conf.js',
-        singleRun: true
-      }
-    }
+    } 
   });
 
 
@@ -413,8 +380,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
-      'clean:server',
-      'wiredep',
+      'clean:server', 
       'concurrent:server',
       'autoprefixer:server',
       'connect:livereload',
@@ -428,33 +394,24 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('test', [
-    'clean:server',
-    'wiredep',
-    'concurrent:test',
-    'autoprefixer',
-    'connect:test',
-    'karma'
+    'clean:server',     'autoprefixer',
+    'connect:test', 
   ]);
 
   grunt.registerTask('build', [
-    'clean:dist',
-    'wiredep',
-    'useminPrepare',
-    'concurrent:dist',
+    'clean:dist', 
+    'useminPrepare', 
     'autoprefixer',
     'concat',
     'ngAnnotate',
-    'copy:dist',
-    'cdnify',
+    'copy:dist', 
     'cssmin',
     'uglify',
     'filerev',
-    'usemin',
-    'htmlmin'
+    'usemin', 
   ]);
 
-  grunt.registerTask('default', [
-    'newer:jshint',
+  grunt.registerTask('default', [ 
     'test',
     'build'
   ]);
