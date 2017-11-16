@@ -223,34 +223,34 @@ module.exports = function (grunt) {
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
-    useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
-      options: {
-        dest: '<%= yeoman.dist %>',
-        flow: {
-          html: {
-            steps: {
-              js: ['concat', 'uglifyjs'],
-              css: ['cssmin']
-            },
-            post: {}
-          }
-        }
-      }
-    },
+    // useminPrepare: {
+    //   html: '<%= yeoman.app %>/index.html',
+    //   options: {
+    //     dest: '<%= yeoman.dist %>',
+    //     flow: {
+    //       html: {
+    //         steps: {
+    //           js: ['concat', 'uglifyjs'],
+    //           css: ['cssmin']
+    //         },
+    //         post: {}
+    //       }
+    //     }
+    //   }
+    // },
 
     // Performs rewrites based on filerev and the useminPrepare configuration
-    usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      options: {
-        assetsDirs: [
-          '<%= yeoman.dist %>',
-          '<%= yeoman.dist %>/images',
-          '<%= yeoman.dist %>/styles'
-        ]
-      }
-    },
+    // usemin: {
+    //   html: ['<%= yeoman.dist %>/{,*/}*.html'],
+    //   css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+    //   options: {
+    //     assetsDirs: [
+    //       '<%= yeoman.dist %>',
+    //       '<%= yeoman.dist %>/images',
+    //       '<%= yeoman.dist %>/styles'
+    //     ]
+    //   }
+    // },
 
     // The following *-min tasks will produce minified files in the dist folder
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
@@ -399,16 +399,14 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'clean:dist', 
-    'useminPrepare', 
+    'clean:dist',  
     'autoprefixer',
     'concat',
     'ngAnnotate',
     'copy:dist', 
     'cssmin',
     'uglify',
-    'filerev',
-    'usemin', 
+    'filerev', 
   ]);
 
   grunt.registerTask('default', [ 
